@@ -1,0 +1,97 @@
+#!/bin/sh
+#
+# tlswrap	tlswrap short service description
+#
+# chkconfig:	2345 80 30
+#
+# description:	tlswrap long service description
+#
+
+
+# Source function library
+. /etc/rc.d/init.d/functions
+
+# Get network config
+. /etc/sysconfig/network
+
+# Get service config - may override defaults
+[ -f /etc/sysconfig/tlswrap ] && . /etc/sysconfig/tlswrap
+
+# Check that networking is up.
+if is_yes "${NETWORKING}"; then
+	if [ ! -f /var/lock/subsys/network ]; then
+		# nls "ERROR: Networking is down. %s can't be run." tlswrap
+		msg_network_down tlswrap
+		exit 1
+	fi
+else
+	exit 0
+fi
+
+# See how we were called.
+case "$1" in
+  start)
+	# Check if the service is already running?
+	if [ ! -f /var/lock/subsys/tlswrap ]; then
+		# show "Starting %s service" tlswrap
+		msg_starting tlswrap
+		daemon --user nobody tlswrap $TLSWRAP_OPT
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/tlswrap
+	else
+		# show "%s service is already running." tlswrap
+		msg_already_running tlswrap
+	fi
+	;;
+  stop)
+	if [ -f /var/lock/subsys/tlswrap ]; then
+		# Stop daemons.
+		# show "Stopping %s service" tlswrap
+		msg_stopping tlswrap
+		killproc tlswrap
+		rm -f /var/lock/subsys/tlswrap
+	else
+		# show "%s service is not running." tlswrap
+		msg_not_running tlswrap
+	fi
+	;;
+  restart)
+	$0 stop
+	$0 start
+	exit $?
+	;;
+  reload)
+	if [ -f /var/lock/subsys/tlswrap ]; then
+		# show "Reload %s service" tlswrap
+		msg_reloading tlswrap
+		killproc tlswrap -HUP
+		RETVAL=$?
+	else
+		# show "%s service is not running." tlswrap
+		msg_not_running tlswrap >&2
+		RETVAL=7
+	fi
+	;;
+  force-reload)
+	# if program allows reloading without stopping
+	$0 reload
+
+	# or if it doesn't
+	$0 restart
+
+	exit $?
+	;;
+  status)
+	status tlswrap
+	RETVAL=$?
+	;;
+  *)
+	# show "Usage: %s {start|stop|restart|reload|force-reload|status}"
+	msg_usage "$0 {start|stop|restart|reload|force-reload|status}"
+	exit 3
+esac
+
+exit $RETVAL
+
+# This must be last line !
+# vi:syntax=sh:tw=78:ts=8:sw=4
