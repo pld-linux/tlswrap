@@ -12,7 +12,7 @@ Source2:	%{name}.sysconfig
 URL:		http://tlswrap.sunsite.dk/
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:	openssl-devel
+BuildRequires:	openssl-devel >= 0.9.7d
 PreReq:		rc-scripts
 Requires(post,preun):   /sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
