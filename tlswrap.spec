@@ -4,17 +4,17 @@ Name:		tlswrap
 Version:	0.7
 Release:	0.1
 License:	GPL
-Group:          Networking/Daemons
+Group:		Networking/Daemons
 Source0:	http://tlswrap.sunsite.dk/%{name}%{version}.tar.gz
 # Source0-md5:	6da51a7e3e7950b2b3feca77e9708314
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 URL:		http://tlswrap.sunsite.dk/
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	openssl-devel >= 0.9.7d
 PreReq:		rc-scripts
-Requires(post,preun):   /sbin/chkconfig
+Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
