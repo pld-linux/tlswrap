@@ -1,4 +1,5 @@
-Summary:	TLS/SSL FTP wrapper/proxy.
+Summary:	TLS/SSL FTP wrapper/proxy
+Summary(pl):	Wrapper/proxy TLS/SSL dla FTP
 Name:		tlswrap
 Version:	0.7
 Release:	0.1
@@ -12,6 +13,7 @@ URL:		http://tlswrap.sunsite.dk/
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:	openssl-devel
+PreReq:		rc-scripts
 Requires(post,preun):   /sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -19,6 +21,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 TLSWrap is a TLS/SSL FTP wrapper/proxy for UNIX and Windows, allowing
 you to use your favourite FTP client with any TLS/SSL-enabled FTP
 server.
+
+%description -l pl
+TLSWrap to wrapper/proxy TLS/SSL dla FTP dla uniksów i Windows,
+pozwalaj±cy na u¿ywanie ulubionego klienta FTP z dowolnym serwerem FTP
+obs³uguj±cym TLS/SSL.
 
 %prep
 %setup -q -n %{name}%{version}
@@ -64,6 +71,6 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr( 644,root,root) %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/tlswrap
-%attr( 754,root,root) /etc/rc.d/init.d/tlswrap
 %attr(755,root,root) %{_bindir}/*
+%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/tlswrap
+%attr(754,root,root) /etc/rc.d/init.d/tlswrap
