@@ -23,7 +23,7 @@ you to use your favourite FTP client with any TLS/SSL-enabled FTP
 server.
 
 %description -l pl
-TLSWrap to wrapper/proxy TLS/SSL dla FTP dla uniksów i Windows,
+TLSWrap to wrapper/proxy TLS/SSL dla FTP dla Uniksów i Windows,
 pozwalaj±cy na u¿ywanie ulubionego klienta FTP z dowolnym serwerem FTP
 obs³uguj±cym TLS/SSL.
 
