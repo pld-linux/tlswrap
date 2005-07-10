@@ -1,12 +1,12 @@
 Summary:	TLS/SSL FTP wrapper/proxy
 Summary(pl):	Wrapper/proxy TLS/SSL dla FTP
 Name:		tlswrap
-Version:	0.7
+Version:	1.02
 Release:	0.1
 License:	GPL
 Group:		Networking/Daemons
-Source0:	http://tlswrap.sunsite.dk/%{name}%{version}.tar.gz
-# Source0-md5:	6da51a7e3e7950b2b3feca77e9708314
+Source0:	http://tlswrap.sunsite.dk/%{name}-%{version}.tar.gz
+# Source0-md5:	fa9e503a861a7519a8f485bad77e2cc7
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 URL:		http://tlswrap.sunsite.dk/
@@ -28,10 +28,9 @@ pozwalaj±cy na u¿ywanie ulubionego klienta FTP z dowolnym serwerem FTP
 obs³uguj±cym TLS/SSL.
 
 %prep
-%setup -q -n %{name}%{version}
+%setup -q
 
 %build
-touch memcmp.c
 %{__aclocal}
 %{__autoconf}
 %{__autoheader}
