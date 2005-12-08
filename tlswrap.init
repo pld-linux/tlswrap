@@ -20,7 +20,6 @@
 # Check that networking is up.
 if is_yes "${NETWORKING}"; then
 	if [ ! -f /var/lock/subsys/network ]; then
-		# nls "ERROR: Networking is down. %s can't be run." tlswrap
 		msg_network_down tlswrap
 		exit 1
 	fi
@@ -33,25 +32,21 @@ case "$1" in
   start)
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/tlswrap ]; then
-		# show "Starting %s service" tlswrap
 		msg_starting tlswrap
 		daemon --user nobody tlswrap $TLSWRAP_OPT
 		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/tlswrap
 	else
-		# show "%s service is already running." tlswrap
 		msg_already_running tlswrap
 	fi
 	;;
   stop)
 	if [ -f /var/lock/subsys/tlswrap ]; then
 		# Stop daemons.
-		# show "Stopping %s service" tlswrap
 		msg_stopping tlswrap
 		killproc tlswrap
 		rm -f /var/lock/subsys/tlswrap
 	else
-		# show "%s service is not running." tlswrap
 		msg_not_running tlswrap
 	fi
 	;;
@@ -62,12 +57,10 @@ case "$1" in
 	;;
   reload)
 	if [ -f /var/lock/subsys/tlswrap ]; then
-		# show "Reload %s service" tlswrap
 		msg_reloading tlswrap
 		killproc tlswrap -HUP
 		RETVAL=$?
 	else
-		# show "%s service is not running." tlswrap
 		msg_not_running tlswrap >&2
 		RETVAL=7
 	fi
@@ -86,7 +79,6 @@ case "$1" in
 	RETVAL=$?
 	;;
   *)
-	# show "Usage: %s {start|stop|restart|reload|force-reload|status}"
 	msg_usage "$0 {start|stop|restart|reload|force-reload|status}"
 	exit 3
 esac
