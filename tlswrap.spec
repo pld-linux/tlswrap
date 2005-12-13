@@ -13,8 +13,8 @@ URL:		http://tlswrap.sunsite.dk/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	openssl-devel >= 0.9.7d
-PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
+Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -71,5 +71,5 @@ fi
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
-%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/tlswrap
+%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/tlswrap
 %attr(754,root,root) /etc/rc.d/init.d/tlswrap
