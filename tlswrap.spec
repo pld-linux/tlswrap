@@ -1,5 +1,5 @@
 Summary:	TLS/SSL FTP wrapper/proxy
-Summary(pl):	Wrapper/proxy TLS/SSL dla FTP
+Summary(pl.UTF-8):   Wrapper/proxy TLS/SSL dla FTP
 Name:		tlswrap
 Version:	1.02
 Release:	0.1
@@ -22,10 +22,10 @@ TLSWrap is a TLS/SSL FTP wrapper/proxy for UNIX and Windows, allowing
 you to use your favourite FTP client with any TLS/SSL-enabled FTP
 server.
 
-%description -l pl
-TLSWrap to wrapper/proxy TLS/SSL dla FTP dla Uniksów i Windows,
-pozwalaj±cy na u¿ywanie ulubionego klienta FTP z dowolnym serwerem FTP
-obs³uguj±cym TLS/SSL.
+%description -l pl.UTF-8
+TLSWrap to wrapper/proxy TLS/SSL dla FTP dla UniksÃ³w i Windows,
+pozwalajÄ…cy na uÅ¼ywanie ulubionego klienta FTP z dowolnym serwerem FTP
+obsÅ‚ugujÄ…cym TLS/SSL.
 
 %prep
 %setup -q
