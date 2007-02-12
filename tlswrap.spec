@@ -1,5 +1,5 @@
 Summary:	TLS/SSL FTP wrapper/proxy
-Summary(pl.UTF-8):   Wrapper/proxy TLS/SSL dla FTP
+Summary(pl.UTF-8):	Wrapper/proxy TLS/SSL dla FTP
 Name:		tlswrap
 Version:	1.02
 Release:	0.1
